@@ -18,49 +18,51 @@ import { CropTypeViewImplComponent } from '@app/view/crop/type/crop-type-view-im
 import { CropTypeControllerImpl } from '@app/controller/crop/type/crop-type-controller.impl';
 
 export const routes: Routes = [
-  { 
-      path: '', 
-      component: CropTypesComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Crop Types') },
-      providers: [
-        CropTypeControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ CropTypeEffects ]))
-      ] 
+  {
+    path: '',
+    component: CropTypesComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Crop Types') },
+    providers: [
+      CropTypeControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
+      importProvidersFrom(EffectsModule.forFeature([CropTypeEffects])),
+    ],
   },
-  { 
-      path: 'edit-crop-type', 
-      component: EditCropTypeImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Edit Crop Type') },
-      providers: [ // []
-        CropTypeControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ CropTypeEffects ]))
-      ] 
+  {
+    path: 'edit-crop-type',
+    component: EditCropTypeImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Edit Crop Type') },
+    providers: [
+      // []
+      CropTypeControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
+      importProvidersFrom(EffectsModule.forFeature([CropTypeEffects])),
+    ],
   },
-  { 
-      path: 'search-crop-types', 
-      component: SearchCropTypesImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Search Crop Types') },
-      providers: [ // []
-        CropTypeControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ CropTypeEffects ]))
-      ] 
+  {
+    path: 'search-crop-types',
+    component: SearchCropTypesImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Search Crop Types') },
+    providers: [
+      // []
+      CropTypeControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
+      importProvidersFrom(EffectsModule.forFeature([CropTypeEffects])),
+    ],
   },
-  { 
-      path: 'crop-type-view', 
-      component: CropTypeViewImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Crop Type View') },
-      providers: [ // []
-        CropTypeControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ CropTypeEffects ]))
-      ] 
+  {
+    path: 'crop-type-view',
+    component: CropTypeViewImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Crop Type View') },
+    providers: [
+      // []
+      CropTypeControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(cropTypeFeature)),
+      importProvidersFrom(EffectsModule.forFeature([CropTypeEffects])),
+    ],
   },
 ];
-

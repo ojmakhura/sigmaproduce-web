@@ -14,7 +14,7 @@ import { SharedModule } from '@app/@shared';
 import { MaterialModule } from '@app/material.module';
 import { CsvModule } from '@ctrl/ngx-csv';
 import { CropTypeEditorComponent } from '@app/components/crop/type/crop-type-editor.component';
-import { CropTypeVO } from '@app/model/bw/co/sigmaproduce/crop/type/crop-type-vo';
+import { CropTypeVO } from '@app/model/crop/type/crop-type-vo';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -34,7 +34,6 @@ import { Observable, Subscription } from 'rxjs';
   ],
 })
 export class EditCropTypeImplComponent extends EditCropTypeComponent {
-
   cropType$: Observable<CropTypeVO> = this.store.select(CropTypeSelectors.selectCropType);
   cropTypeSubscription: Subscription;
 
@@ -71,7 +70,6 @@ export class EditCropTypeImplComponent extends EditCropTypeComponent {
   }
 
   override beforeEditCropTypeSave(form: any): void {
-
     this.store.dispatch(
       CropTypeActions.save({
         cropType: form.cropType,
@@ -83,7 +81,6 @@ export class EditCropTypeImplComponent extends EditCropTypeComponent {
 
   override doNgAfterViewInit(): void {
     this.route.queryParams.subscribe((params: any) => {
-      
       if (params.id) {
         this.store.dispatch(
           CropTypeActions.findById({
@@ -97,7 +94,7 @@ export class EditCropTypeImplComponent extends EditCropTypeComponent {
 
     this.cropTypeSubscription = this.cropType$.subscribe((cropType) => {
       if (cropType) {
-        console.log(this.cropTypeEditorForm)
+        console.log(this.cropTypeEditorForm);
         this.cropTypeEditorComponent?.idControl?.setValue(cropType.id);
         this.cropTypeEditorComponent?.nameControl?.setValue(cropType.name);
         this.cropTypeEditorComponent?.codeControl?.setValue(cropType.code);
@@ -107,7 +104,7 @@ export class EditCropTypeImplComponent extends EditCropTypeComponent {
         this.cropTypeEditorComponent?.updatedDateControl?.setValue(cropType.updatedDate);
         // this.cropTypeEditorComponent?.imagesControl?.setValue(cropType.images);
         this.cropTypeEditorComponent?.descriptionControl?.setValue(cropType.description);
-        console.log(this.cropTypeEditorForm)
+        console.log(this.cropTypeEditorForm);
       }
     });
   }

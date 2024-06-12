@@ -3,23 +3,22 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditCropTypeImplComponent } from '@app/view/crop/type/edit-crop-type-impl.component.';
 
 describe('EditCropTypeImplComponent', () => {
-	let component: EditCropTypeImplComponent;
-	let fixture: ComponentFixture<EditCropTypeImplComponent>;
+  let component: EditCropTypeImplComponent;
+  let fixture: ComponentFixture<EditCropTypeImplComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
-			declarations: [EditCropTypeImplComponent]
-		})
-			.compileComponents();
-	}));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [EditCropTypeImplComponent],
+    }).compileComponents();
+  }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(EditCropTypeImplComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+  beforeEach(() => {
+    fixture = TestBed.createComponent(EditCropTypeImplComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

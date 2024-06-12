@@ -18,7 +18,7 @@ import { CsvModule } from '@ctrl/ngx-csv';
 import { EditVarietyImplComponent } from '@app/view/crop/edit-variety-impl.component';
 import { CropEditorComponent } from '@app/components/crop/crop-editor.component';
 import { CropVarietyEditorComponent } from '@app/components/crop/varieties/crop-variety-editor.component';
-import { CropVO } from '@app/model/bw/co/sigmaproduce/crop/crop-vo';
+import { CropVO } from '@app/model/crop/crop-vo';
 
 @Component({
   selector: 'app-edit-crop',
@@ -51,7 +51,6 @@ export class EditCropImplComponent extends EditCropComponent {
   doNgOnDestroy(): void {}
 
   override get editCropSaveCrop(): CropVO {
-
     let crop = new CropVO();
 
     crop.id = this.cropComponent?.idControl?.value;
@@ -66,7 +65,7 @@ export class EditCropImplComponent extends EditCropComponent {
     crop.images = this.cropComponent?.imagesControl?.value;
     crop.maturesIn = this.cropComponent?.maturesInControl?.value;
     crop.maturityPeriod = this.cropComponent?.maturityPeriodControl?.value;
-    
+
     return crop;
   }
 
@@ -74,16 +73,13 @@ export class EditCropImplComponent extends EditCropComponent {
     this.store.dispatch(CropTypeActions.getAll({ loading: true, loaderMessage: 'Loading...' }));
 
     this.cropTypes$.subscribe((cropTypes) => {
-
-      if(this.cropComponent) {
-
+      if (this.cropComponent) {
         this.cropComponent.typeBackingList = [];
-        this.cropType
+        this.cropType;
         console.log(cropTypes);
         cropTypes.forEach((cropType) => {
           this.cropComponent?.typeBackingList.push({ value: cropType.id, label: cropType.name });
         });
-
       }
     });
   }
@@ -98,6 +94,5 @@ export class EditCropImplComponent extends EditCropComponent {
         loaderMessage: 'Saving...',
       })
     );
-
   }
 }

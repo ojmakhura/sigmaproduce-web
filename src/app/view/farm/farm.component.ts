@@ -10,30 +10,26 @@ import { UseCaseScope } from '@app/utils/use-case-scope';
   standalone: true,
 })
 export class FarmComponent implements OnInit, AfterViewInit {
+  protected route: ActivatedRoute;
+  protected router: Router;
+  protected _injector: Injector;
+  protected useCaseScope: UseCaseScope;
+  farmController: FarmControllerImpl;
 
-    protected route: ActivatedRoute;
-    protected router: Router;
-    protected _injector: Injector;
-    protected useCaseScope: UseCaseScope;
-    farmController: FarmControllerImpl;
+  constructor(injector: Injector) {
+    this.route = injector.get(ActivatedRoute);
+    this.router = injector.get(Router);
+    this.useCaseScope = injector.get(UseCaseScope);
+    this.farmController = injector.get(FarmControllerImpl);
+    this._injector = injector;
+  }
 
-    constructor(injector: Injector) {
-        this.route = injector.get(ActivatedRoute);
-        this.router = injector.get(Router);
-        this.useCaseScope = injector.get(UseCaseScope);
-        this.farmController = injector.get(FarmControllerImpl);
-        this._injector = injector;
+  ngOnInit() {
+    let forward = this.farmController.startUseCase();
+    if (forward !== null) {
+      this.router.navigate(['/' + forward]);
     }
-	
-    ngOnInit() {
-        
-        let forward = this.farmController.startUseCase();
-        if(forward !== null) {
-            this.router.navigate(['/' + forward]);
-        }
-    }
+  }
 
-    ngAfterViewInit() {
-    }
-
+  ngAfterViewInit() {}
 }

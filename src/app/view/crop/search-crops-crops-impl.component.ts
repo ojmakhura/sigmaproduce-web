@@ -11,30 +11,20 @@ import { CsvModule } from '@ctrl/ngx-csv';
 @Component({
   selector: 'app-search-crops-crops',
   templateUrl: './search-crops-crops.component.html',
-  styleUrls: [ './search-crops-crops.component.scss' ],
+  styleUrls: ['./search-crops-crops.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    SharedModule,
-    MaterialModule,
-    CsvModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, SharedModule, MaterialModule, CsvModule],
 })
 export class SearchCropsCropsImplComponent extends SearchCropsCropsComponent {
-
   constructor() {
     super();
   }
 
-
-	override doSearchCropsEdit(form: any): any {
+  override doSearchCropsEdit(form: any): any {
     return form;
-	}
+  }
 
-	override doSearchCropsDetails(form: any): any {
+  override doSearchCropsDetails(form: any): any {
     return form;
-	}
+  }
 }

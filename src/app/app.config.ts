@@ -18,17 +18,15 @@ import { environment } from '@env/environment';
 import { UseCaseScope } from './utils/use-case-scope';
 import { withInterceptors, provideHttpClient } from '@angular/common/http';
 import { RouteReusableStrategy } from './@shared';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { apiPrefixInterceptor, errorHandlerInterceptor } from './@core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     UseCaseScope,
     provideRouter(routes),
-    provideAnimations(),provideHttpClient(withInterceptors([
-      apiPrefixInterceptor,
-      errorHandlerInterceptor,
-    ])),
+    provideAnimations(),
+    provideHttpClient(withInterceptors([apiPrefixInterceptor, errorHandlerInterceptor])),
     provideHttpClient(),
     provideEffects(),
     provideStore(),
@@ -38,25 +36,19 @@ export const appConfig: ApplicationConfig = {
       StoreModule.forRoot({}),
       StoreDevtoolsModule.instrument({}),
       EffectsModule.forRoot([]),
-      ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
+      ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
     ),
     provideStoreDevtools({ maxAge: 25, logOnly: false }),
-    provideEffects([
-      CropEffects,
-      CropTypeEffects,
-      FarmEffects,
-    ]),
+    provideEffects([CropEffects, CropTypeEffects, FarmEffects]),
     provideStore({
       crop: cropReducer,
       cropType: cropTypeReducer,
       farm: farmReducer,
     }),
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     {
       provide: RouteReuseStrategy,
       useClass: RouteReusableStrategy,
     },
   ],
 };
-
-

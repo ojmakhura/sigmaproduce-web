@@ -168,5 +168,8 @@
       }
     }
   },
-  "defaultProject": "sigmaproduce"
+  "defaultProject": "sigmaproduce",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -11,30 +11,20 @@ import { CsvModule } from '@ctrl/ngx-csv';
 @Component({
   selector: 'app-search-crop-types-crop-types',
   templateUrl: './search-crop-types-crop-types.component.html',
-  styleUrls: [ './search-crop-types-crop-types.component.scss' ],
+  styleUrls: ['./search-crop-types-crop-types.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    SharedModule,
-    MaterialModule,
-    CsvModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, SharedModule, MaterialModule, CsvModule],
 })
 export class SearchCropTypesCropTypesImplComponent extends SearchCropTypesCropTypesComponent {
-
   constructor() {
     super();
   }
 
-
-	override doSearchCropTypesEdit(form: any): any {
+  override doSearchCropTypesEdit(form: any): any {
     return form;
-	}
+  }
 
-	override doSearchCropTypesDetails(form: any): any {
+  override doSearchCropTypesDetails(form: any): any {
     return form;
-	}
+  }
 }

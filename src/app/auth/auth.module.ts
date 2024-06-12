@@ -20,8 +20,6 @@ import { LoginComponent } from './login.component';
     AuthRoutingModule,
     LoaderComponent,
   ],
-  declarations: [
-    LoginComponent
-  ]
+  declarations: [LoginComponent],
 })
-export class AuthModule { }
+export class AuthModule {}

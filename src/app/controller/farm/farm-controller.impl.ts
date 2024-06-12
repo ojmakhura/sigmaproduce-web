@@ -4,9 +4,7 @@ import { FarmController } from '@app/controller/farm/farm-controller';
 
 @Injectable()
 export class FarmControllerImpl extends FarmController {
-
-    constructor() {
-        super();
-    }
-
+  constructor() {
+    super();
+  }
 }

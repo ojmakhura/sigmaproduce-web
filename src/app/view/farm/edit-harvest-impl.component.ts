@@ -33,15 +33,13 @@ import { HarvestEditorComponent } from '@app/components/farm/cultivation/harvest
   ],
 })
 export class EditHarvestImplComponent extends EditHarvestComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    super(data);
+  }
 
-    constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-        super(data);
-    }
+  override beforeOnInit(form: EditHarvestVarsForm): EditHarvestVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditHarvestVarsForm): EditHarvestVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

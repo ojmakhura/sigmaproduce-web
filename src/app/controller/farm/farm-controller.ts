@@ -3,562 +3,507 @@
 import { inject } from '@angular/core';
 import { ControllerBase } from '@app/controller/utils/controller.base';
 
-import { FarmVO } from '@app/model/bw/co/sigmaproduce/farm/farm-vo';
+import { FarmVO } from '@app/model/farm/farm-vo';
 import { FarmDetailsComponent } from '@app/components/farm/farm-details.component';
-import { FarmCriteria } from '@app/model/bw/co/sigmaproduce/farm/farm-criteria';
-import { FarmListVO } from '@app/model/bw/co/sigmaproduce/farm/farm-list-vo';
+import { FarmCriteria } from '@app/model/farm/farm-criteria';
+import { FarmListVO } from '@app/model/farm/farm-list-vo';
 
 export abstract class FarmController extends ControllerBase {
+  actionToDialog: boolean = false;
 
-    actionToDialog: boolean = false;
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
-    
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.save]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editFarm_save
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  /**
+   * TODO: Model Documentation for farm.save
+   * This method is called when 'save' is triggered in the view 'Edit Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editFarm_save(farm: FarmVO): void {
+    //this method can be overridden
+  }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.save]
-// triggerName: action.triggerName
-// triggerMethodName: _editFarm_save
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-    /**
-     * TODO: Model Documentation for farm.save
-     * This method is called when 'save' is triggered in the view 'Edit Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editFarm_save(farm: FarmVO): void
-    {
-        //this method can be overridden
-    }
+  /**
+   * Retrieves editFarmSave()
+   *
+   * @return editFarmSave
+   * @throws Throwable
+   */
+  public editFarmSave(farm: FarmVO) {
+    let forward: string | null;
 
-    /**
-     * Retrieves editFarmSave()
-     *    
-     * @return editFarmSave
-     * @throws Throwable
-     */
-    public editFarmSave(farm: FarmVO)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editFarm_save(farm);
+    //trigger method execution
+    this._editFarm_save(farm);
 
-        forward = this._saveFarmEditFarmSaveFormImpl(farm);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/edit-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+    forward = this._saveFarmEditFarmSaveFormImpl(farm);
+
+    if (forward !== null) {
+      if (forward === 'farm/edit-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for farm.Save Farm
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _saveFarmEditFarmSaveFormImpl(farm: FarmVO): string | null
-    {
-        let forward: string | null = '';
-        forward = null;
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Save Farm
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _saveFarmEditFarmSaveFormImpl(farm: FarmVO): string | null {
+    let forward: string | null = '';
+    forward = null;
+    return forward;
+  }
+
+  // parameters: []
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.search]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editFarm_search
+  // forwardParameters: []
+  /**
+   * TODO: Model Documentation for farm.search
+   * This method is called when 'search' is triggered in the view 'Edit Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editFarm_search(): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves editFarmSearch()
+   *
+   * @return editFarmSearch
+   * @throws Throwable
+   */
+  public editFarmSearch() {
+    let forward: string | null;
+
+    //trigger method execution
+    this._editFarm_search();
+
+    forward = this._initialiseSearchScreenEditFarmSearchFormImpl();
+
+    if (forward !== null) {
+      if (forward === 'farm/edit-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: []
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.search]
-// triggerName: action.triggerName
-// triggerMethodName: _editFarm_search
-// forwardParameters: []
-    /**
-     * TODO: Model Documentation for farm.search
-     * This method is called when 'search' is triggered in the view 'Edit Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editFarm_search(): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Initialise Search Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseSearchScreenEditFarmSearchFormImpl(): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/search-farm';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.delete]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editFarm_delete
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
+  /**
+   * TODO: Model Documentation for farm.delete
+   * This method is called when 'delete' is triggered in the view 'Edit Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editFarm_delete(farm: FarmVO): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves editFarmDelete()
+   *
+   * @return editFarmDelete
+   * @throws Throwable
+   */
+  public editFarmDelete(farm: FarmVO) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._editFarm_delete(farm);
+
+    forward = this._deleteFarmEditFarmDeleteFormImpl(farm);
+
+    if (forward !== null) {
+      if (forward === 'farm/edit-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * Retrieves editFarmSearch()
-     *    
-     * @return editFarmSearch
-     * @throws Throwable
-     */
-    public editFarmSearch()
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editFarm_search();
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
 
-        forward = this._initialiseSearchScreenEditFarmSearchFormImpl();
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/edit-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+  /**
+   * TODO: Model Documentation for farm.Delete Farm
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _deleteFarmEditFarmDeleteFormImpl(farm: FarmVO): string | null {
+    let forward: string | null = '';
+    forward = null;
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.edit]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchFarm_edit
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  /**
+   * TODO: Model Documentation for farm.edit
+   * This method is called when 'edit' is triggered in the view 'Search Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchFarm_edit(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchFarmEdit()
+   *
+   * @return searchFarmEdit
+   * @throws Throwable
+   */
+  public searchFarmEdit(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchFarm_edit(id);
+
+    forward = this._initialiseEditScreenSearchFarmEditFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'farm/search-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for farm.Initialise Search Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseSearchScreenEditFarmSearchFormImpl(): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/search-farm';
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenSearchFarmEditFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/edit-farm';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.search]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchFarm_search
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria]]
+  /**
+   * TODO: Model Documentation for farm.search
+   * This method is called when 'search' is triggered in the view 'Search Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchFarm_search(criteria: FarmCriteria): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchFarmSearch()
+   *
+   * @return searchFarmSearch
+   * @throws Throwable
+   */
+  public searchFarmSearch(criteria: FarmCriteria) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchFarm_search(criteria);
+
+    forward = this._cropFarmSearchFarmSearchFormImpl(criteria);
+
+    if (forward !== null) {
+      if (forward === 'farm/search-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.delete]
-// triggerName: action.triggerName
-// triggerMethodName: _editFarm_delete
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm]]
-    /**
-     * TODO: Model Documentation for farm.delete
-     * This method is called when 'delete' is triggered in the view 'Edit Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editFarm_delete(farm: FarmVO): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Crop Farm
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _cropFarmSearchFarmSearchFormImpl(criteria: FarmCriteria): string | null {
+    let forward: string | null = '';
+    forward = this._initialiseSearchScreenSearchFarmSearchFormImpl(criteria);
+    return forward;
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Initialise Search Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseSearchScreenSearchFarmSearchFormImpl(criteria: FarmCriteria): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/search-farm';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.addNew]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchFarm_addNew
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  /**
+   * TODO: Model Documentation for farm.addNew
+   * This method is called when 'addNew' is triggered in the view 'Search Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchFarm_addNew(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchFarmAddNew()
+   *
+   * @return searchFarmAddNew
+   * @throws Throwable
+   */
+  public searchFarmAddNew(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchFarm_addNew(id);
+
+    forward = this._initialiseEditScreenSearchFarmAddNewFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'farm/search-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * Retrieves editFarmDelete()
-     *    
-     * @return editFarmDelete
-     * @throws Throwable
-     */
-    public editFarmDelete(farm: FarmVO)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editFarm_delete(farm);
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
 
-        forward = this._deleteFarmEditFarmDeleteFormImpl(farm);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/edit-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+  /**
+   * TODO: Model Documentation for farm.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenSearchFarmAddNewFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/edit-farm';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farmDetails], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.details]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchFarm_details
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  /**
+   * TODO: Model Documentation for farm.details
+   * This method is called when 'details' is triggered in the view 'Search Farm'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchFarm_details(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchFarmDetails()
+   *
+   * @return searchFarmDetails
+   * @throws Throwable
+   */
+  public searchFarmDetails(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchFarm_details(id);
+
+    forward = this._initialiseFarmDetailsSearchFarmDetailsFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'farm/search-farm') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for farm.Delete Farm
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _deleteFarmEditFarmDeleteFormImpl(farm: FarmVO): string | null
-    {
-        let forward: string | null = '';
-        forward = null;
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for farm.Initialise Farm Details
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseFarmDetailsSearchFarmDetailsFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/farm-view';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.edit]
+  // triggerName: action.triggerName
+  // triggerMethodName: _farmView_edit
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  /**
+   * TODO: Model Documentation for farm.edit
+   * This method is called when 'edit' is triggered in the view 'Farm View'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _farmView_edit(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves farmViewEdit()
+   *
+   * @return farmViewEdit
+   * @throws Throwable
+   */
+  public farmViewEdit(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._farmView_edit(id);
+
+    forward = this._initialiseEditScreenFarmViewEditFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'farm/farm-view') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.edit]
-// triggerName: action.triggerName
-// triggerMethodName: _searchFarm_edit
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-    /**
-     * TODO: Model Documentation for farm.edit
-     * This method is called when 'edit' is triggered in the view 'Search Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchFarm_edit(id: string): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
     }
+  }
 
-    /**
-     * Retrieves searchFarmEdit()
-     *    
-     * @return searchFarmEdit
-     * @throws Throwable
-     */
-    public searchFarmEdit(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchFarm_edit(id);
+  /**
+   * TODO: Model Documentation for farm.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenFarmViewEditFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'farm/edit-farm';
+    return forward;
+  }
 
-        forward = this._initialiseEditScreenSearchFarmEditFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/search-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
+  // parameters: []
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
+  // trigger: $action.trigger
+  // triggerName: action.triggerName
+  // triggerMethodName: _farm_started
+  // forwardParameters: []
+  /**
+   * This method is called when the use case 'Farm' starts.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _farm_started(): void {
+    //this method can be overridden
+  }
 
-    /**
-     * TODO: Model Documentation for farm.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenSearchFarmEditFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/edit-farm';
-;
-        return forward;
-    }
+  /**
+   * Retrieves the internal start use case
+   *
+   * @return farm
+   * @throws Throwable
+   */
+  protected internalStartUseCase(pageVariables: any): string {
+    let forward: string;
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.search]
-// triggerName: action.triggerName
-// triggerMethodName: _searchFarm_search
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria]]
-    /**
-     * TODO: Model Documentation for farm.search
-     * This method is called when 'search' is triggered in the view 'Search Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchFarm_search(criteria: FarmCriteria): void
-    {
-        //this method can be overridden
-    }
+    //trigger method execution
+    this._farm_started();
 
-    /**
-     * Retrieves searchFarmSearch()
-     *    
-     * @return searchFarmSearch
-     * @throws Throwable
-     */
-    public searchFarmSearch(criteria: FarmCriteria)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchFarm_search(criteria);
+    forward = 'farm/search-farm';
 
-        forward = this._cropFarmSearchFarmSearchFormImpl(criteria);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/search-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for farm.Crop Farm
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _cropFarmSearchFarmSearchFormImpl(criteria: FarmCriteria): string | null
-    {
-        let forward: string | null = '';
-        forward = this._initialiseSearchScreenSearchFarmSearchFormImpl(criteria);
-;
-        return forward;
-    }
-
-    /**
-     * TODO: Model Documentation for farm.Initialise Search Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseSearchScreenSearchFarmSearchFormImpl(criteria: FarmCriteria): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/search-farm';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.addNew]
-// triggerName: action.triggerName
-// triggerMethodName: _searchFarm_addNew
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-    /**
-     * TODO: Model Documentation for farm.addNew
-     * This method is called when 'addNew' is triggered in the view 'Search Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchFarm_addNew(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves searchFarmAddNew()
-     *    
-     * @return searchFarmAddNew
-     * @throws Throwable
-     */
-    public searchFarmAddNew(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchFarm_addNew(id);
-
-        forward = this._initialiseEditScreenSearchFarmAddNewFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/search-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for farm.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenSearchFarmAddNewFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/edit-farm';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farmDetails], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.details]
-// triggerName: action.triggerName
-// triggerMethodName: _searchFarm_details
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-    /**
-     * TODO: Model Documentation for farm.details
-     * This method is called when 'details' is triggered in the view 'Search Farm'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchFarm_details(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves searchFarmDetails()
-     *    
-     * @return searchFarmDetails
-     * @throws Throwable
-     */
-    public searchFarmDetails(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchFarm_details(id);
-
-        forward = this._initialiseFarmDetailsSearchFarmDetailsFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/search-farm')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for farm.Initialise Farm Details
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseFarmDetailsSearchFarmDetailsFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/farm-view';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farm], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[farm.edit]
-// triggerName: action.triggerName
-// triggerMethodName: _farmView_edit
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-    /**
-     * TODO: Model Documentation for farm.edit
-     * This method is called when 'edit' is triggered in the view 'Farm View'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _farmView_edit(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves farmViewEdit()
-     *    
-     * @return farmViewEdit
-     * @throws Throwable
-     */
-    public farmViewEdit(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._farmView_edit(id);
-
-        forward = this._initialiseEditScreenFarmViewEditFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'farm/farm-view')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for farm.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenFarmViewEditFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'farm/edit-farm';
-;
-        return forward;
-    }
-
-// parameters: []
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.farms], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[farm.id]]
-// trigger: $action.trigger
-// triggerName: action.triggerName
-// triggerMethodName: _farm_started
-// forwardParameters: []
-    /**
-     * This method is called when the use case 'Farm' starts.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _farm_started(): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves the internal start use case
-     *    
-     * @return farm
-     * @throws Throwable
-     */
-    protected internalStartUseCase(pageVariables: any): string
-    {        
-        let forward: string;
-        
-        //trigger method execution
-        this._farm_started();
-
-        forward = 'farm/search-farm';
-        
-        return forward;
-    }
-
+    return forward;
+  }
 }

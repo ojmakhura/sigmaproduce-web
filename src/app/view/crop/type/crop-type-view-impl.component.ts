@@ -15,7 +15,7 @@ import { MaterialModule } from '@app/material.module';
 import { CsvModule } from '@ctrl/ngx-csv';
 import { CropTypeDetailsComponent } from '@app/components/crop/type/crop-type-details.component';
 import { CropTypeEditorComponent } from '@app/components/crop/type/crop-type-editor.component';
-import { CropTypeVO } from '@app/model/bw/co/sigmaproduce/crop/type/crop-type-vo';
+import { CropTypeVO } from '@app/model/crop/type/crop-type-vo';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -36,7 +36,6 @@ import { Observable, Subscription } from 'rxjs';
   ],
 })
 export class CropTypeViewImplComponent extends CropTypeViewComponent {
-  
   cropType$: Observable<CropTypeVO> = this.store.select(CropTypeSelectors.selectCropType);
   cropTypeSubscription: Subscription;
 
@@ -53,10 +52,9 @@ export class CropTypeViewImplComponent extends CropTypeViewComponent {
       this.cropTypeSubscription.unsubscribe();
     }
   }
-  
+
   override doNgAfterViewInit(): void {
     this.cropTypeSubscription = this.route.queryParams.subscribe((params: any) => {
-      
       if (params.id) {
         this.store.dispatch(
           CropTypeActions.findById({
@@ -70,7 +68,6 @@ export class CropTypeViewImplComponent extends CropTypeViewComponent {
 
     this.cropType$.subscribe((cropType) => {
       if (cropType) {
-        
         this.cropTypeDetailsComponent?.idControl?.setValue(cropType.id);
         this.cropTypeDetailsComponent?.nameControl?.setValue(cropType.name);
         this.cropTypeDetailsComponent?.codeControl?.setValue(cropType.code);
@@ -83,7 +80,6 @@ export class CropTypeViewImplComponent extends CropTypeViewComponent {
         this.cropTypeDetailsComponent?.numberOfCropsControl?.setValue(cropType.numberOfCrops);
         this.cropTypeDetailsComponent?.numberOfDiseasesControl?.setValue(cropType.numberOfDiseases);
         this.cropTypeDetailsComponent?.numberOfPestsControl?.setValue(cropType.numberOfPests);
-        
       }
     });
   }

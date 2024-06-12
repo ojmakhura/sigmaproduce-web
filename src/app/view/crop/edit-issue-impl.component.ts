@@ -33,15 +33,13 @@ import { CropIssueEditorComponent } from '@app/components/crop/issue/crop-issue-
   ],
 })
 export class EditIssueImplComponent extends EditIssueComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    super(data);
+  }
 
-    constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-        super(data);
-    }
+  override beforeOnInit(form: EditIssueVarsForm): EditIssueVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditIssueVarsForm): EditIssueVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

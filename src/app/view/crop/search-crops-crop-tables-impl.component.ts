@@ -11,22 +11,12 @@ import { CsvModule } from '@ctrl/ngx-csv';
 @Component({
   selector: 'app-search-crops-crop-tables',
   templateUrl: './search-crops-crop-tables.component.html',
-  styleUrls: [ './search-crops-crop-tables.component.scss' ],
+  styleUrls: ['./search-crops-crop-tables.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule,
-    SharedModule,
-    MaterialModule,
-    CsvModule,
-  ],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, SharedModule, MaterialModule, CsvModule],
 })
 export class SearchCropsCropTablesImplComponent extends SearchCropsCropTablesComponent {
-
   constructor() {
     super();
   }
-
 }

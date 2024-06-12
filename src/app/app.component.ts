@@ -43,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private titleService: Title,
     private translateService: TranslateService,
-    private i18nService: I18nService,
+    private i18nService: I18nService
   ) {}
 
   ngOnInit() {
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }),
         filter((route) => route.outlet === 'primary'),
         switchMap((route) => route.data),
-        untilDestroyed(this),
+        untilDestroyed(this)
       )
       .subscribe((event) => {
         const title = event['title'];

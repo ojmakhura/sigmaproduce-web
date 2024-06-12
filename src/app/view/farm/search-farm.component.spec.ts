@@ -3,23 +3,22 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SearchFarmImplComponent } from '@app/view/farm/search-farm-impl.component.';
 
 describe('SearchFarmImplComponent', () => {
-	let component: SearchFarmImplComponent;
-	let fixture: ComponentFixture<SearchFarmImplComponent>;
+  let component: SearchFarmImplComponent;
+  let fixture: ComponentFixture<SearchFarmImplComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
-			declarations: [SearchFarmImplComponent]
-		})
-			.compileComponents();
-	}));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [SearchFarmImplComponent],
+    }).compileComponents();
+  }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(SearchFarmImplComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SearchFarmImplComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

@@ -34,27 +34,23 @@ import { CropTypeEditorComponent } from '@app/components/crop/type/crop-type-edi
   ],
 })
 export class SearchCropTypesImplComponent extends SearchCropTypesComponent {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
+  override beforeOnInit(form: SearchCropTypesVarsForm): SearchCropTypesVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: SearchCropTypesVarsForm): SearchCropTypesVarsForm{     
-        return form;
-    }
+  doNgOnDestroy(): void {}
 
-    doNgOnDestroy(): void {
-    }
-
-    override doNgAfterViewInit(): void {
-
-      this.store.dispatch(
-        CropTypeActions.search({
-          criteria: this.criteria,
-          loading: true,
-          loaderMessage: 'Searching for crop types...',
-        })
-      );
-
-    }
+  override doNgAfterViewInit(): void {
+    this.store.dispatch(
+      CropTypeActions.search({
+        criteria: this.criteria,
+        loading: true,
+        loaderMessage: 'Searching for crop types...',
+      })
+    );
+  }
 }

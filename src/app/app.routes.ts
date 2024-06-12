@@ -20,23 +20,25 @@ export const routes: Routes = [
     },
     {
       path: 'about',
-      loadChildren: async () => (await import('./about/about.module')).AboutModule
+      loadChildren: async () => (await import('./about/about.module')).AboutModule,
     },
     {
-      path: 'crop', 
+      path: 'crop',
       loadChildren: () => import('@app/view/crop/crop.routes').then((m) => m.routes),
     },
     {
-      path: 'crop/type', 
+      path: 'crop/type',
       loadChildren: () => import('@app/view/crop/type/crop-type.routes').then((m) => m.routes),
     },
     {
-      path: 'farm', 
+      path: 'farm',
       loadChildren: () => import('@app/view/farm/farm.routes').then((m) => m.routes),
     },
   ]),
   // Fallback when no prior route is matched
-  { 
-    path: '**', redirectTo: '', pathMatch: 'full' 
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];

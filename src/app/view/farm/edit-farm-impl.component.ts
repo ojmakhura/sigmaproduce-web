@@ -32,15 +32,13 @@ import { FarmEditorComponent } from '@app/components/farm/farm-editor.component'
   ],
 })
 export class EditFarmImplComponent extends EditFarmComponent {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
+  override beforeOnInit(form: EditFarmVarsForm): EditFarmVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditFarmVarsForm): EditFarmVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

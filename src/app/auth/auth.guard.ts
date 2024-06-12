@@ -4,11 +4,9 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@a
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard{
-  
+export class AuthGuard {
   async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
     if (!this.authenticated) {
-
       // Add the rediect to login screen
     }
 

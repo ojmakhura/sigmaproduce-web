@@ -33,15 +33,13 @@ import { CropVarietyEditorComponent } from '@app/components/crop/varieties/crop-
   ],
 })
 export class EditVarietyImplComponent extends EditVarietyComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    super(data);
+  }
 
-    constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-        super(data);
-    }
+  override beforeOnInit(form: EditVarietyVarsForm): EditVarietyVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditVarietyVarsForm): EditVarietyVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

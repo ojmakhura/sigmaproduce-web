@@ -4,9 +4,7 @@ import { CropTypeController } from '@app/controller/crop/type/crop-type-controll
 
 @Injectable()
 export class CropTypeControllerImpl extends CropTypeController {
-
-    constructor() {
-        super();
-    }
-
+  constructor() {
+    super();
+  }
 }

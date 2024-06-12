@@ -6,7 +6,5 @@ import * as FarmActions from './farm.actions';
 
 @Injectable()
 export class FarmEffects {
-
-    constructor(private actions$: Actions) {}
-
+  constructor(private actions$: Actions) {}
 }

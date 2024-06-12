@@ -3,23 +3,22 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditHarvestImplComponent } from '@app/view/farm/edit-harvest-impl.component.';
 
 describe('EditHarvestImplComponent', () => {
-	let component: EditHarvestImplComponent;
-	let fixture: ComponentFixture<EditHarvestImplComponent>;
+  let component: EditHarvestImplComponent;
+  let fixture: ComponentFixture<EditHarvestImplComponent>;
 
-	beforeEach(waitForAsync(() => {
-		TestBed.configureTestingModule({
-			declarations: [EditHarvestImplComponent]
-		})
-			.compileComponents();
-	}));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      declarations: [EditHarvestImplComponent],
+    }).compileComponents();
+  }));
 
-	beforeEach(() => {
-		fixture = TestBed.createComponent(EditHarvestImplComponent);
-		component = fixture.componentInstance;
-		fixture.detectChanges();
-	});
+  beforeEach(() => {
+    fixture = TestBed.createComponent(EditHarvestImplComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-	it('should create', () => {
-		expect(component).toBeTruthy();
-	});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

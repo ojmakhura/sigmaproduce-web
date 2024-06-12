@@ -5,560 +5,505 @@ import { ControllerBase } from '@app/controller/utils/controller.base';
 
 import { CropTypeDetailsComponent } from '@app/components/crop/type/crop-type-details.component';
 import { CropTypeEditorComponent } from '@app/components/crop/type/crop-type-editor.component';
-import { CropTypeVO } from '@app/model/bw/co/sigmaproduce/crop/type/crop-type-vo';
-import { CropTypeListVO } from '@app/model/bw/co/sigmaproduce/crop/type/crop-type-list-vo';
+import { CropTypeVO } from '@app/model/crop/type/crop-type-vo';
+import { CropTypeListVO } from '@app/model/crop/type/crop-type-list-vo';
 
 export abstract class CropTypeController extends ControllerBase {
+  actionToDialog: boolean = false;
 
-    actionToDialog: boolean = false;
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
-    
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.save]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editCropType_save
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  /**
+   * TODO: Model Documentation for crop.type.save
+   * This method is called when 'save' is triggered in the view 'Edit Crop Type'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editCropType_save(cropType: CropTypeVO): void {
+    //this method can be overridden
+  }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.save]
-// triggerName: action.triggerName
-// triggerMethodName: _editCropType_save
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-    /**
-     * TODO: Model Documentation for crop.type.save
-     * This method is called when 'save' is triggered in the view 'Edit Crop Type'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editCropType_save(cropType: CropTypeVO): void
-    {
-        //this method can be overridden
-    }
+  /**
+   * Retrieves editCropTypeSave()
+   *
+   * @return editCropTypeSave
+   * @throws Throwable
+   */
+  public editCropTypeSave(cropType: CropTypeVO) {
+    let forward: string | null;
 
-    /**
-     * Retrieves editCropTypeSave()
-     *    
-     * @return editCropTypeSave
-     * @throws Throwable
-     */
-    public editCropTypeSave(cropType: CropTypeVO)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editCropType_save(cropType);
+    //trigger method execution
+    this._editCropType_save(cropType);
 
-        forward = this._saveCropTypeEditCropTypeSaveFormImpl(cropType);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/edit-crop-type')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+    forward = this._saveCropTypeEditCropTypeSaveFormImpl(cropType);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/edit-crop-type') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for crop.type.Save Crop Type
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _saveCropTypeEditCropTypeSaveFormImpl(cropType: CropTypeVO): string | null
-    {
-        let forward: string | null = '';
-        forward = null;
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Save Crop Type
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _saveCropTypeEditCropTypeSaveFormImpl(cropType: CropTypeVO): string | null {
+    let forward: string | null = '';
+    forward = null;
+    return forward;
+  }
+
+  // parameters: []
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.search]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editCropType_search
+  // forwardParameters: []
+  /**
+   * TODO: Model Documentation for crop.type.search
+   * This method is called when 'search' is triggered in the view 'Edit Crop Type'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editCropType_search(): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves editCropTypeSearch()
+   *
+   * @return editCropTypeSearch
+   * @throws Throwable
+   */
+  public editCropTypeSearch() {
+    let forward: string | null;
+
+    //trigger method execution
+    this._editCropType_search();
+
+    forward = this._initialiseSearchScreenEditCropTypeSearchFormImpl();
+
+    if (forward !== null) {
+      if (forward === 'crop/type/edit-crop-type') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: []
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.search]
-// triggerName: action.triggerName
-// triggerMethodName: _editCropType_search
-// forwardParameters: []
-    /**
-     * TODO: Model Documentation for crop.type.search
-     * This method is called when 'search' is triggered in the view 'Edit Crop Type'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editCropType_search(): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Search Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseSearchScreenEditCropTypeSearchFormImpl(): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/search-crop-types';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.delete]
+  // triggerName: action.triggerName
+  // triggerMethodName: _editCropType_delete
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
+  /**
+   * TODO: Model Documentation for crop.type.delete
+   * This method is called when 'delete' is triggered in the view 'Edit Crop Type'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _editCropType_delete(cropType: CropTypeVO): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves editCropTypeDelete()
+   *
+   * @return editCropTypeDelete
+   * @throws Throwable
+   */
+  public editCropTypeDelete(cropType: CropTypeVO) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._editCropType_delete(cropType);
+
+    forward = this._deleteCropTypeEditCropTypeDeleteFormImpl(cropType);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/edit-crop-type') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * Retrieves editCropTypeSearch()
-     *    
-     * @return editCropTypeSearch
-     * @throws Throwable
-     */
-    public editCropTypeSearch()
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editCropType_search();
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
 
-        forward = this._initialiseSearchScreenEditCropTypeSearchFormImpl();
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/edit-crop-type')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+  /**
+   * TODO: Model Documentation for crop.type.Delete Crop Type
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _deleteCropTypeEditCropTypeDeleteFormImpl(cropType: CropTypeVO): string | null {
+    let forward: string | null = '';
+    forward = null;
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.edit]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchCropTypes_edit
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  /**
+   * TODO: Model Documentation for crop.type.edit
+   * This method is called when 'edit' is triggered in the view 'Search Crop Types'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchCropTypes_edit(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchCropTypesEdit()
+   *
+   * @return searchCropTypesEdit
+   * @throws Throwable
+   */
+  public searchCropTypesEdit(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchCropTypes_edit(id);
+
+    forward = this._initialiseEditScreenSearchCropTypesEditFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/search-crop-types') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Search Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseSearchScreenEditCropTypeSearchFormImpl(): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/search-crop-types';
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenSearchCropTypesEditFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/edit-crop-type';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.search]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchCropTypes_search
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria]]
+  /**
+   * TODO: Model Documentation for crop.type.search
+   * This method is called when 'search' is triggered in the view 'Search Crop Types'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchCropTypes_search(criteria: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchCropTypesSearch()
+   *
+   * @return searchCropTypesSearch
+   * @throws Throwable
+   */
+  public searchCropTypesSearch(criteria: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchCropTypes_search(criteria);
+
+    forward = this._cropTypesSearchSearchCropTypesSearchFormImpl(criteria);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/search-crop-types') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.delete]
-// triggerName: action.triggerName
-// triggerMethodName: _editCropType_delete
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType]]
-    /**
-     * TODO: Model Documentation for crop.type.delete
-     * This method is called when 'delete' is triggered in the view 'Edit Crop Type'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _editCropType_delete(cropType: CropTypeVO): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Crop Types Search
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _cropTypesSearchSearchCropTypesSearchFormImpl(criteria: string): string | null {
+    let forward: string | null = '';
+    forward = this._initialiseSearchScreenSearchCropTypesSearchFormImpl(criteria);
+    return forward;
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Search Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseSearchScreenSearchCropTypesSearchFormImpl(criteria: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/search-crop-types';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.addNew]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchCropTypes_addNew
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  /**
+   * TODO: Model Documentation for crop.type.addNew
+   * This method is called when 'addNew' is triggered in the view 'Search Crop Types'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchCropTypes_addNew(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchCropTypesAddNew()
+   *
+   * @return searchCropTypesAddNew
+   * @throws Throwable
+   */
+  public searchCropTypesAddNew(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchCropTypes_addNew(id);
+
+    forward = this._initialiseEditScreenSearchCropTypesAddNewFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/search-crop-types') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * Retrieves editCropTypeDelete()
-     *    
-     * @return editCropTypeDelete
-     * @throws Throwable
-     */
-    public editCropTypeDelete(cropType: CropTypeVO)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._editCropType_delete(cropType);
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
 
-        forward = this._deleteCropTypeEditCropTypeDeleteFormImpl(cropType);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/edit-crop-type')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenSearchCropTypesAddNewFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/edit-crop-type';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeDetails], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.details]
+  // triggerName: action.triggerName
+  // triggerMethodName: _searchCropTypes_details
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  /**
+   * TODO: Model Documentation for crop.type.details
+   * This method is called when 'details' is triggered in the view 'Search Crop Types'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _searchCropTypes_details(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves searchCropTypesDetails()
+   *
+   * @return searchCropTypesDetails
+   * @throws Throwable
+   */
+  public searchCropTypesDetails(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._searchCropTypes_details(id);
+
+    forward = this._initialiseCropTypeDetailsSearchCropTypesDetailsFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/search-crop-types') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-    /**
-     * TODO: Model Documentation for crop.type.Delete Crop Type
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _deleteCropTypeEditCropTypeDeleteFormImpl(cropType: CropTypeVO): string | null
-    {
-        let forward: string | null = '';
-        forward = null;
-;
-        return forward;
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
+    }
+  }
+
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Crop Type Details
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseCropTypeDetailsSearchCropTypesDetailsFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/crop-type-view';
+    return forward;
+  }
+
+  // parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.edit]
+  // triggerName: action.triggerName
+  // triggerMethodName: _cropTypeView_edit
+  // forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  /**
+   * TODO: Model Documentation for crop.type.edit
+   * This method is called when 'edit' is triggered in the view 'Crop Type View'.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _cropTypeView_edit(id: string): void {
+    //this method can be overridden
+  }
+
+  /**
+   * Retrieves cropTypeViewEdit()
+   *
+   * @return cropTypeViewEdit
+   * @throws Throwable
+   */
+  public cropTypeViewEdit(id: string) {
+    let forward: string | null;
+
+    //trigger method execution
+    this._cropTypeView_edit(id);
+
+    forward = this._initialiseEditScreenCropTypeViewEditFormImpl(id);
+
+    if (forward !== null) {
+      if (forward === 'crop/type/crop-type-view') {
+        //forward = null; //the destination form is the same, stay on the current view
+      }
     }
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.edit]
-// triggerName: action.triggerName
-// triggerMethodName: _searchCropTypes_edit
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-    /**
-     * TODO: Model Documentation for crop.type.edit
-     * This method is called when 'edit' is triggered in the view 'Search Crop Types'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchCropTypes_edit(id: string): void
-    {
-        //this method can be overridden
+    if (!this.actionToDialog && forward !== null) {
+      this.router.navigate([forward], { queryParams: this.useCaseScope.queryParams });
     }
+  }
 
-    /**
-     * Retrieves searchCropTypesEdit()
-     *    
-     * @return searchCropTypesEdit
-     * @throws Throwable
-     */
-    public searchCropTypesEdit(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchCropTypes_edit(id);
+  /**
+   * TODO: Model Documentation for crop.type.Initialise Edit Screen
+   *
+   * @param form the associated form
+   * @return the forward view
+   * @throws Throwable
+   */
+  protected _initialiseEditScreenCropTypeViewEditFormImpl(id: string): string | null {
+    let forward: string | null = '';
+    this.actionToDialog = false;
+    forward = 'crop/type/edit-crop-type';
+    return forward;
+  }
 
-        forward = this._initialiseEditScreenSearchCropTypesEditFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/search-crop-types')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
+  // parameters: []
+  // formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
+  // trigger: $action.trigger
+  // triggerName: action.triggerName
+  // triggerMethodName: _cropTypes_started
+  // forwardParameters: []
+  /**
+   * This method is called when the use case 'Crop Types' starts.
+   * It can be safely overridden in descendant classes.
+   *
+   * @param form the associated form
+   */
+  protected _cropTypes_started(): void {
+    //this method can be overridden
+  }
 
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenSearchCropTypesEditFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/edit-crop-type';
-;
-        return forward;
-    }
+  /**
+   * Retrieves the internal start use case
+   *
+   * @return cropTypes
+   * @throws Throwable
+   */
+  protected internalStartUseCase(pageVariables: any): string {
+    let forward: string;
 
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.search]
-// triggerName: action.triggerName
-// triggerMethodName: _searchCropTypes_search
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria]]
-    /**
-     * TODO: Model Documentation for crop.type.search
-     * This method is called when 'search' is triggered in the view 'Search Crop Types'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchCropTypes_search(criteria: string): void
-    {
-        //this method can be overridden
-    }
+    //trigger method execution
+    this._cropTypes_started();
 
-    /**
-     * Retrieves searchCropTypesSearch()
-     *    
-     * @return searchCropTypesSearch
-     * @throws Throwable
-     */
-    public searchCropTypesSearch(criteria: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchCropTypes_search(criteria);
+    forward = 'crop/type/search-crop-types';
 
-        forward = this._cropTypesSearchSearchCropTypesSearchFormImpl(criteria);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/search-crop-types')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for crop.type.Crop Types Search
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _cropTypesSearchSearchCropTypesSearchFormImpl(criteria: string): string | null
-    {
-        let forward: string | null = '';
-        forward = this._initialiseSearchScreenSearchCropTypesSearchFormImpl(criteria);
-;
-        return forward;
-    }
-
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Search Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseSearchScreenSearchCropTypesSearchFormImpl(criteria: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/search-crop-types';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.addNew]
-// triggerName: action.triggerName
-// triggerMethodName: _searchCropTypes_addNew
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-    /**
-     * TODO: Model Documentation for crop.type.addNew
-     * This method is called when 'addNew' is triggered in the view 'Search Crop Types'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchCropTypes_addNew(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves searchCropTypesAddNew()
-     *    
-     * @return searchCropTypesAddNew
-     * @throws Throwable
-     */
-    public searchCropTypesAddNew(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchCropTypes_addNew(id);
-
-        forward = this._initialiseEditScreenSearchCropTypesAddNewFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/search-crop-types')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenSearchCropTypesAddNewFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/edit-crop-type';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeDetails], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.details]
-// triggerName: action.triggerName
-// triggerMethodName: _searchCropTypes_details
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-    /**
-     * TODO: Model Documentation for crop.type.details
-     * This method is called when 'details' is triggered in the view 'Search Crop Types'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _searchCropTypes_details(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves searchCropTypesDetails()
-     *    
-     * @return searchCropTypesDetails
-     * @throws Throwable
-     */
-    public searchCropTypesDetails(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._searchCropTypes_details(id);
-
-        forward = this._initialiseCropTypeDetailsSearchCropTypesDetailsFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/search-crop-types')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Crop Type Details
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseCropTypeDetailsSearchCropTypesDetailsFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/crop-type-view';
-;
-        return forward;
-    }
-
-// parameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypeEditor], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropType], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: org.andromda.cartridges.angular.metafacades.AngularEventLogicImpl[crop.type.edit]
-// triggerName: action.triggerName
-// triggerMethodName: _cropTypeView_edit
-// forwardParameters: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-    /**
-     * TODO: Model Documentation for crop.type.edit
-     * This method is called when 'edit' is triggered in the view 'Crop Type View'.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _cropTypeView_edit(id: string): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves cropTypeViewEdit()
-     *    
-     * @return cropTypeViewEdit
-     * @throws Throwable
-     */
-    public cropTypeViewEdit(id: string)
-    {        
-        let forward: string | null;
-        
-        //trigger method execution
-        this._cropTypeView_edit(id);
-
-        forward = this._initialiseEditScreenCropTypeViewEditFormImpl(id);
-        
-        if(forward !== null)
-        {
-            if(forward === 'crop/type/crop-type-view')
-            {
-                //forward = null; //the destination form is the same, stay on the current view
-            }
-        }
-        
-        if(!this.actionToDialog && forward !== null) {
-            this.router.navigate([forward], {queryParams: this.useCaseScope.queryParams});
-        } 
-    }
-
-    /**
-     * TODO: Model Documentation for crop.type.Initialise Edit Screen
-     *
-     * @param form the associated form
-     * @return the forward view
-     * @throws Throwable
-     */
-    protected _initialiseEditScreenCropTypeViewEditFormImpl(id: string): string | null
-    {
-        let forward: string | null = '';
-        this.actionToDialog = false;
-        forward = 'crop/type/edit-crop-type';
-;
-        return forward;
-    }
-
-// parameters: []
-// formFields: [org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.criteria], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.cropTypes], org.andromda.cartridges.angular.metafacades.AngularParameterLogicImpl[crop.type.id]]
-// trigger: $action.trigger
-// triggerName: action.triggerName
-// triggerMethodName: _cropTypes_started
-// forwardParameters: []
-    /**
-     * This method is called when the use case 'Crop Types' starts.
-     * It can be safely overridden in descendant classes.
-     *
-     * @param form the associated form
-     */
-    protected _cropTypes_started(): void
-    {
-        //this method can be overridden
-    }
-
-    /**
-     * Retrieves the internal start use case
-     *    
-     * @return cropTypes
-     * @throws Throwable
-     */
-    protected internalStartUseCase(pageVariables: any): string
-    {        
-        let forward: string;
-        
-        //trigger method execution
-        this._cropTypes_started();
-
-        forward = 'crop/type/search-crop-types';
-        
-        return forward;
-    }
-
+    return forward;
+  }
 }

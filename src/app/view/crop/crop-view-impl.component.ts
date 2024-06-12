@@ -18,7 +18,7 @@ import { CsvModule } from '@ctrl/ngx-csv';
 import { EditVarietyImplComponent } from '@app/view/crop/edit-variety-impl.component';
 import { CropEditorComponent } from '@app/components/crop/crop-editor.component';
 import { CropVarietyEditorComponent } from '@app/components/crop/varieties/crop-variety-editor.component';
-import { CropVO } from '@app/model/bw/co/sigmaproduce/crop/crop-vo';
+import { CropVO } from '@app/model/crop/crop-vo';
 import { CropViewComponent, CropViewVarsForm } from './crop-view.component';
 import { Observable, Subscription } from 'rxjs';
 import { CropDetailsComponent } from '@app/components/crop/crop-details.component';
@@ -36,11 +36,10 @@ import { CropDetailsComponent } from '@app/components/crop/crop-details.componen
     SharedModule,
     MaterialModule,
     CsvModule,
-    CropDetailsComponent
+    CropDetailsComponent,
   ],
 })
 export class CropViewImplComponent extends CropViewComponent {
-
   crop$: Observable<CropVO> = this.store.select(CropSelectors.selectCrop);
   cropSubscription: Subscription;
 
@@ -72,7 +71,7 @@ export class CropViewImplComponent extends CropViewComponent {
     });
 
     this.cropSubscription = this.crop$.subscribe((crop) => {
-      if(crop) {
+      if (crop) {
         this.cropDetailsIdControl.setValue(crop.id);
         this.cropDetailsNameControl.setValue(crop.name);
         this.cropDetailsDescriptionControl.setValue(crop.description);
@@ -80,6 +79,4 @@ export class CropViewImplComponent extends CropViewComponent {
       }
     });
   }
-
-  
 }

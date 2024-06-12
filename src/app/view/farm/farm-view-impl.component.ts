@@ -32,15 +32,13 @@ import { FarmDetailsComponent } from '@app/components/farm/farm-details.componen
   ],
 })
 export class FarmViewImplComponent extends FarmViewComponent {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
+  override beforeOnInit(form: FarmViewVarsForm): FarmViewVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: FarmViewVarsForm): FarmViewVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

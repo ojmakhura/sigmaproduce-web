@@ -33,15 +33,13 @@ import { CultivationEditorComponent } from '@app/components/farm/cultivation/cul
   ],
 })
 export class EditCultivationImplComponent extends EditCultivationComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    super(data);
+  }
 
-    constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-        super(data);
-    }
+  override beforeOnInit(form: EditCultivationVarsForm): EditCultivationVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditCultivationVarsForm): EditCultivationVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

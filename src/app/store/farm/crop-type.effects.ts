@@ -6,7 +6,5 @@ import * as CropTypeActions from './crop-type.actions';
 
 @Injectable()
 export class CropTypeEffects {
-
-    constructor(private actions$: Actions) {}
-
+  constructor(private actions$: Actions) {}
 }

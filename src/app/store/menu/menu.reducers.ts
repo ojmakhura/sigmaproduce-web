@@ -4,10 +4,12 @@ import { menuKey, initialState } from './menu.state';
 
 export const menuReducer = createReducer(
   initialState,
-  
+
   on(MenuActions.addMenu, (state, action) => ({
     ...state,
-    menus: state.menus.find((menu) => menu.routerLink === action.menu.routerLink) ? [...state.menus, action.menu] : [...state.menus],
+    menus: state.menus.find((menu) => menu.routerLink === action.menu.routerLink)
+      ? [...state.menus, action.menu]
+      : [...state.menus],
     errors: [],
   })),
   on(MenuActions.getMenusSuccess, (state, action) => ({

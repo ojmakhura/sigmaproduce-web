@@ -34,15 +34,13 @@ import { FarmSearchComponent } from '@app/components/farm/farm-search.component'
   ],
 })
 export class SearchFarmImplComponent extends SearchFarmComponent {
+  constructor() {
+    super();
+  }
 
-    constructor() {
-        super();
-    }
+  override beforeOnInit(form: SearchFarmVarsForm): SearchFarmVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: SearchFarmVarsForm): SearchFarmVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

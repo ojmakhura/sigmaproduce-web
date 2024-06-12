@@ -33,15 +33,13 @@ import { PostEditorComponent } from '@app/components/farm/post/post-editor.compo
   ],
 })
 export class EditPostImplComponent extends EditPostComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) data: any) {
+    super(data);
+  }
 
-    constructor(@Inject(MAT_DIALOG_DATA) data: any) {
-        super(data);
-    }
+  override beforeOnInit(form: EditPostVarsForm): EditPostVarsForm {
+    return form;
+  }
 
-    override beforeOnInit(form: EditPostVarsForm): EditPostVarsForm{     
-        return form;
-    }
-
-    doNgOnDestroy(): void {
-    }
+  doNgOnDestroy(): void {}
 }

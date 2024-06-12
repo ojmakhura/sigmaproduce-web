@@ -2,41 +2,18 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { farmKey, FarmState } from './farm.state';
 
-export const selectFarmState = createFeatureSelector<FarmState> (
-    farmKey
-);
+export const selectFarmState = createFeatureSelector<FarmState>(farmKey);
 
-export const selectId = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.id
-);
+export const selectId = createSelector(selectFarmState, (state: FarmState) => state.id);
 
-export const selectCriteria = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.criteria
-);
+export const selectCriteria = createSelector(selectFarmState, (state: FarmState) => state.criteria);
 
-export const selectFarms = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.farms
-);
+export const selectFarms = createSelector(selectFarmState, (state: FarmState) => state.farms);
 
-export const selectMessages = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.messages
-);
+export const selectMessages = createSelector(selectFarmState, (state: FarmState) => state.messages);
 
-export const selectSuccess = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.success
-);
+export const selectSuccess = createSelector(selectFarmState, (state: FarmState) => state.success);
 
-export const selectLoading = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.loading
-);
+export const selectLoading = createSelector(selectFarmState, (state: FarmState) => state.loading);
 
-export const selectError = createSelector(
-    selectFarmState,
-    (state: FarmState) => state.error
-);
+export const selectError = createSelector(selectFarmState, (state: FarmState) => state.error);

@@ -21,82 +21,87 @@ import { EditHarvestImplComponent } from '@app/view/farm/edit-harvest-impl.compo
 import { FarmControllerImpl } from '@app/controller/farm/farm-controller.impl';
 
 export const routes: Routes = [
-  { 
-      path: '', 
-      component: FarmComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Farm') },
-      providers: [
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: '',
+    component: FarmComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Farm') },
+    providers: [
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'edit-farm', 
-      component: EditFarmImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Edit Farm') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'edit-farm',
+    component: EditFarmImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Edit Farm') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'search-farm', 
-      component: SearchFarmImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Search Farm') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'search-farm',
+    component: SearchFarmImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Search Farm') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'farm-view', 
-      component: FarmViewImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Farm View') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'farm-view',
+    component: FarmViewImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Farm View') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'edit-post', 
-      component: EditPostImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Edit Post') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'edit-post',
+    component: EditPostImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Edit Post') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'edit-cultivation', 
-      component: EditCultivationImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Edit Cultivation') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'edit-cultivation',
+    component: EditCultivationImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Edit Cultivation') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
-  { 
-      path: 'edit-harvest', 
-      component: EditHarvestImplComponent, 
-      canActivate: [AuthenticationGuard],
-      data: { title: marker('Edit Harvest') },
-      providers: [ // []
-        FarmControllerImpl,
-        importProvidersFrom(StoreModule.forFeature(farmFeature)),
-        importProvidersFrom(EffectsModule.forFeature([ FarmEffects ]))
-      ] 
+  {
+    path: 'edit-harvest',
+    component: EditHarvestImplComponent,
+    canActivate: [AuthenticationGuard],
+    data: { title: marker('Edit Harvest') },
+    providers: [
+      // []
+      FarmControllerImpl,
+      importProvidersFrom(StoreModule.forFeature(farmFeature)),
+      importProvidersFrom(EffectsModule.forFeature([FarmEffects])),
+    ],
   },
 ];
-

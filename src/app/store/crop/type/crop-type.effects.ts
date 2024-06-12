@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as CropTypeActions from './crop-type.actions';
-import { CropTypeApi } from '@app/service/bw/co/sigmaproduce/crop/type/crop-type-api';
-import { CropTypeListVO } from '@app/model/bw/co/sigmaproduce/crop/type/crop-type-list-vo';
+import { CropTypeApi } from '@app/service/crop/type/crop-type-api';
+import { CropTypeListVO } from '@app/model/crop/type/crop-type-list-vo';
 
 @Injectable()
 export class CropTypeEffects {

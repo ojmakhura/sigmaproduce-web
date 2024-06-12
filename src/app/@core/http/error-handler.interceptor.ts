@@ -7,12 +7,13 @@ import { Logger } from '../logger.service';
 const log = new Logger('ErrorHandlerInterceptor');
 
 export const errorHandlerInterceptor: HttpInterceptorFn = (request, next) => {
-  return next(request).pipe(catchError((error) => {
-    if (!environment.production) {
-      // Do something with the error
-      log.error('Request error', error);
-    }
-    throw error;
-  }));
+  return next(request).pipe(
+    catchError((error) => {
+      if (!environment.production) {
+        // Do something with the error
+        log.error('Request error', error);
+      }
+      throw error;
+    })
+  );
 };
-

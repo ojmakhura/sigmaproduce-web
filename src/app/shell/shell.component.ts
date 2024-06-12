@@ -23,15 +23,7 @@ import * as nav from './navigation';
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
   standalone: true,
-  imports: [
-    CommonModule,
-    TranslateModule,
-    MaterialModule,
-    AuthModule,
-    I18nModule,
-    RouterModule,
-    ShellComponent,
-  ],
+  imports: [CommonModule, TranslateModule, MaterialModule, AuthModule, I18nModule, RouterModule, ShellComponent],
 })
 export class ShellComponent implements OnInit {
   menus: any[] = [];
@@ -43,7 +35,7 @@ export class ShellComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private credentialsService: CredentialsService,
     private store: Store<AuthState>,
-    private breakpoint: BreakpointObserver,
+    private breakpoint: BreakpointObserver
   ) {
     this.menus$ = this.store.pipe(select(MenuSelectors.selectMenus));
     this.username$ = this.store.pipe(select(AuthSelectors.selectUsername));
